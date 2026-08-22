@@ -38,3 +38,4 @@ sentencepiece==0.2.0
 huggingface-hub==0.27.0
 accelerate==1.2.1
 
+indic-nlp-library==0.92
