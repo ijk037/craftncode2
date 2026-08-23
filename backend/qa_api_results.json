@@ -1,8 +1,0 @@
-{
-  "api_fallback_works": true,
-  "translated_response_works": true,
-  "admin_tms_works": false,
-  "errors": [
-    "/translations/stats failed: 404"
-  ]
-}

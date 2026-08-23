@@ -1,20 +1,80 @@
-# Netlify Configuration for Sahayak AI Frontend (Next.js 15)
+[images]
+remote_images = [
+  "^(?:https:\\/\\/(?!\\.)[^/]*?\\.gov\\.in(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$"
+]
 
 [build]
-  base = "frontend"
-  publish = "frontend/.next"
-  command = "npm run build"
+publish = ".next"
+command = "npm run build"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-[build.environment]
+  [build.environment]
   NODE_VERSION = "20"
   NEXT_USE_NETLIFY_EDGE = "false"
 
-# Optional proxy for backend API requests (prevents all CORS issues):
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[headers]]
+for = "/_next/static/*"
+
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
 [[redirects]]
-  from = "/api/v1/*"
-  to = "https://sahayak-ai-government.onrender.com/api/v1/:splat"
-  status = 200
-  force = true
+from = "/api/v1/*"
+to = "https://sahayak-ai-government.onrender.com/api/v1/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/_next/image"
+to = "/.netlify/images?url=:url&w=:width&q=:quality"
+status = 200
+
+  [redirects.query]
+  url = ":url"
+  w = ":width"
+  q = ":quality"
+
+[[redirects]]
+from = "/_ipx/*"
+to = "/.netlify/images?url=:url&w=:width&q=:quality"
+status = 200
+
+  [redirects.query]
+  url = ":url"
+  w = ":width"
+  q = ":quality"
+
+[[redirects]]
+from = "/_next/image"
+to = "/.netlify/images"
+status = 200
+
+[context]
+
+  [context.production]
+
+    [context.production.images]
+    remote_images = [
+      "^(?:https:\\/\\/(?!\\.)[^/]*?\\.gov\\.in(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$"
+    ]
+
+    [[context.production.headers]]
+    for = "/_next/static/*"
+
+      [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+
+  [context.main]
+
+    [context.main.images]
+    remote_images = [
+      "^(?:https:\\/\\/(?!\\.)[^/]*?\\.gov\\.in(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$"
+    ]
+
+    [[context.main.headers]]
+    for = "/_next/static/*"
+
+      [context.main.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"

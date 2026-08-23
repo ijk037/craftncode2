@@ -431,6 +431,20 @@
   },
   "chat": {
     "title": "AI Chat",
-    "description": "Ask Sahayak AI questions about government schemes in Hindi, English, or your regional language."
+    "description": "Ask Sahayak AI questions about government schemes in Hindi, English, or your regional language.",
+    "input_placeholder": "Type your question in any language...",
+    "send": "Send",
+    "start_recording": "Start voice input",
+    "stop_recording": "Stop recording",
+    "listening": "Listening...",
+    "transcribing": "Transcribing...",
+    "speak_answer": "Listen to this answer",
+    "speak_unavailable": "Voice output isn't available for {language} yet",
+    "voice_no_speech_detected": "No speech detected. Please try again.",
+    "voice_transcribe_error": "Couldn't transcribe your voice. Please try again.",
+    "voice_speak_error": "Couldn't generate voice for this answer.",
+    "ask_error": "Something went wrong. Please try again.",
+    "thinking": "Sahayak is thinking...",
+    "empty_state": "Ask a question in any language to get started."
   }
 }

@@ -1,6 +1,0 @@
-Translated Scheme ID: f99973cc-f637-4bc0-96fb-7330ceb0d1b1
-Hindi Name: अनुसूचित जनजाति समुदाय के भीतर अंतरजातीय विवाह के लिए प्रोत्साहन
-English Name: Incentive For The Intra Caste Marriage within Scheduled Tribe Community
-API GET /schemes/f99973cc-f637-4bc0-96fb-7330ceb0d1b1?lang=hi
-Status: 200
-API Returned Name: अनुसूचित जनजाति समुदाय के भीतर अंतरजातीय विवाह के लिए प्रोत्साहन
