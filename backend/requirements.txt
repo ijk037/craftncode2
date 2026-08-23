@@ -43,6 +43,9 @@ indic-nlp-library==0.92
 sacrebleu==2.5.1
 sacremoses==0.1.1
 
+indic-nlp-library==0.92
+sacrebleu==2.5.1
+sacremoses==0.1.1
 # ── AI Chat (RAG Assistant) ─────────────────────────────────────
 groq==1.6.0
 gTTS==2.5.4

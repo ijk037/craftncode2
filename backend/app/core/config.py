@@ -5,8 +5,9 @@ Pydantic v2 BaseSettings — type-safe, env-driven, cached singleton.
 All secrets loaded from environment variables / .env file.
 """
 
+import json
 from functools import lru_cache
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -45,6 +46,19 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: list[str] = Field(
         default=["http://localhost:3000", "http://127.0.0.1:3000"]
     )
+
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
+    def assemble_cors_origins(cls, v: str | list[str]) -> list[str]:
+        if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("[") and v.endswith("]"):
+                try:
+                    return json.loads(v)
+                except json.JSONDecodeError:
+                    pass
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
 
     # ── Logging ───────────────────────────────────────────────────────────
     LOG_LEVEL: str = Field(default="INFO")
